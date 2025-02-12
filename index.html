@@ -13,15 +13,30 @@
 <body>
     <div class="page">
         <header class="header">
-            <h1 class="header__title">Around</h1>
+            <h1 class="header__title"><span class="header__title_word-big">Around</span><span  class="header__title_word-small">The U.S.</span></h1>
         </header>
         <main class="content">
             <section class="profile">
-                <img src="./image/profile.jpg" alt="profile of a men" class="profile__image">
-                <h1 class="profile__name">Jacques Cousteau</h1>
-                <p class="profile__description">Explorador</p>
-                <button class="profile__edit-button"></button>
-                <button class="profile__add-button"></button>
+                
+                <img src="./image/perfil_image.jpg" alt="profile of a men" class="profile__info_image">
+                <div class="profile__info">
+                <ul class="profile__info_list">
+                    <li><h1 class="profile__info_list-name">Jacques Cousteau</h1></li>
+                    <li><p class="profile__info_list-description">Explorador</p></li>
+                </ul>
+                
+                <button class="profile__edit-button">.</button>
+                </div>
+                <button class="profile__add-button">.</button>
+            </section>
+            <section class="galery">
+                <div class="galery__item">
+                    <img src="./image/place_1.jpg" alt="place 1" class="galery__item_image">
+                    <div class="galery__item_content">
+                    <p class="galery__item_name"> texto de prueba largo para aplicar la visibilizacion</p>
+                    <button class="galery__item_like-button"><img src="./image/heart.svg" alt="heart"></button>
+                    </div>
+                </div>
             </section>
         </main>
 
