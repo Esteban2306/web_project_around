@@ -60,4 +60,5 @@
     background-position: center;
     grid-column: 4; 
     margin: auto 0;
+    border: 1px solid transparent;
 }
