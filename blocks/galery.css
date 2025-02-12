@@ -1,0 +1,26 @@
+.galery__item{
+    max-width: 282px;
+    width: 100%;
+    height: 361px;
+    border-radius: 15px;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.galery__item_image{
+    max-width: 282px;
+    height: 282px;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+
+}
+
+.galery__item_name{
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}

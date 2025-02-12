@@ -1,0 +1,17 @@
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Dependencias
+/node_modules/
+
+# Archivos de compilación
+/dist/
+/build/
+
+# Archivos de entorno
+.env
+
+# Configuración del editor
+.vscode/
+*.swp
