@@ -76,7 +76,17 @@
     .galery__item{
         margin: auto;
     }
-    
+    .modal__content{
+        margin: 100px auto;
+
+    }
+
+    .close{
+        width: 20px;
+        height: 20px;
+        right: 6px;
+        top: -37px;
+    }
 }
 
 @media screen and (min-width: 769px) and (max-width: 999px){
@@ -110,5 +120,16 @@
     }
     .galery__item{
         margin: auto;
+    }
+    .modal__content{
+        margin: 100px auto;
+
+    }
+
+    .close{
+        width: 20px;
+        height: 20px;
+        right: 6px;
+        top: -37px;
     }
 }
