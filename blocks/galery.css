@@ -40,7 +40,17 @@
     width: 28px;
     height: 21px;
     max-width: 23px;
+    cursor: pointer;
 }
+.galery__item_like-button:hover{
+    filter: grayscale(100%);
+    opacity: 0.5;
+}
+
+.galery__item_like-button.liked {
+    background-image: url(../image/black_heart.svg);
+}
+
 .galery__item_name{
     color: #333;
     margin: auto;
