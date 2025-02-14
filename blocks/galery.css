@@ -15,7 +15,7 @@
     text-align: center;
 }
 
-.galery__item_image{
+.galery__item-image{
     max-width: 282px;
     height: 282px;
     object-fit: cover;
@@ -24,13 +24,13 @@
 
 }
 
-.galery__item_content{
+.galery__item-content{
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 5px;
 }
-.galery__item_like-button{
+.galery__item-like-button{
     background-image: url(../image/heart.svg);
     background-position: center;
     background-repeat: no-repeat;
@@ -42,16 +42,16 @@
     max-width: 23px;
     cursor: pointer;
 }
-.galery__item_like-button:hover{
+.galery__item-like-button:hover{
     filter: grayscale(100%);
     opacity: 0.5;
 }
 
-.galery__item_like-button.liked {
+.galery__item-like-button.liked {
     background-image: url(../image/black_heart.svg);
 }
 
-.galery__item_name{
+.galery__item-name{
     color: #333;
     margin: auto;
     text-overflow: ellipsis;

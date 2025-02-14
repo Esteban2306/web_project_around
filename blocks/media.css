@@ -11,13 +11,13 @@
         justify-content: center;
     }
 
-    .profile__info_list{
+    .profile__info-list{
         display: flex;
         flex-direction: column;
         align-items: center;
     }
     
-    .profile__info_list-name{
+    .profile__info-name{
     font-size: 22px;
     }
     .profile__edit-button{
@@ -56,13 +56,13 @@
         justify-content: center;
     }
 
-    .profile__info_list{
+    .profile__info-list{
         display: flex;
         flex-direction: column;
         align-items: center;
     }
     
-    .profile__info_list-name{
+    .profile__info-name{
     font-size: 22px;
     }
     .profile__edit-button{
@@ -101,13 +101,13 @@
         justify-content: center;
     }
 
-    .profile__info_list{
+    .profile__info-list{
         display: flex;
         flex-direction: column;
         align-items: center;
     }
     
-    .profile__info_list-name{
+    .profile__info-name{
     font-size: 22px;
     }
     .profile__edit-button{

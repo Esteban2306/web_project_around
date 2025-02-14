@@ -1,6 +1,6 @@
 const profile = document.querySelector('.profile');
-const name = profile.querySelector('.profile__info_list-name');
-const description = profile.querySelector('.profile__info_list-description');
+const name = profile.querySelector('.profile__info-name');
+const description = profile.querySelector('.profile__info-description');
 const editButton = profile.querySelector('.profile__edit-button');
 const addButton = profile.querySelector('.profile__add-button');
 
@@ -43,11 +43,14 @@ const modal = document.createElement('div');
 
 
 editButton.addEventListener('click', () => {
+    document.getElementById('nombre').value = name.textContent;
+    document.getElementById('descripcion').value = description.textContent;
     modal.style.display = 'block'
+    
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-    const heartButton = document.querySelectorAll(".galery__item_like-button");
+    const heartButton = document.querySelectorAll(".galery__item-like-button");
 
     heartButton.forEach((heartButton) => {  
         heartButton.addEventListener("click", function () {
