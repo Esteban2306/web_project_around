@@ -1,0 +1,114 @@
+@media screen and (min-width: 320px) and (max-width: 580px) {
+  
+    .header__title_word{
+        margin-left: 27px;
+    }
+
+    .profile{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .profile__info_list{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .profile__info_list-name{
+    font-size: 22px;
+    }
+    .profile__edit-button{
+        margin: 22px 0 0 10px;
+        max-width: 18px;
+        height: 18px;
+    }
+
+    .galery__item{
+        margin: auto;
+    }
+
+    .modal__content{
+        margin: 50px 22px;
+        position: fixed;
+        max-height: 275px;
+    }
+
+    .close{
+        width: 20px;
+        height: 20px;
+        right: 6px;
+        top: -37px;
+    }
+}
+
+@media screen and (min-width: 581px) and (max-width: 768px) {
+    .header__title_word{
+        margin-left: 27px;
+    }
+
+    .profile{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .profile__info_list{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .profile__info_list-name{
+    font-size: 22px;
+    }
+    .profile__edit-button{
+        margin: 22px 0 0 10px;
+        max-width: 18px;
+        height: 18px;
+    }
+    .galery{
+        gap: 10px;
+    }
+    .galery__item{
+        margin: auto;
+    }
+    
+}
+
+@media screen and (min-width: 769px) and (max-width: 999px){
+    .header__title_word{
+        margin-left: 27px;
+    }
+
+    .profile{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .profile__info_list{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .profile__info_list-name{
+    font-size: 22px;
+    }
+    .profile__edit-button{
+        margin: 22px 0 0 10px;
+        max-width: 18px;
+        height: 18px;
+    }
+    .galery{
+        gap: 10px;
+    }
+    .galery__item{
+        margin: auto;
+    }
+}

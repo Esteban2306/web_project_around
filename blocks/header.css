@@ -13,14 +13,7 @@
     position: relative;
 }
 
-.header__title_word-small{
-    font-size: 42px;
-    font-weight: bold;
-}
-.header__title_word-small{
-    font-size: 12px;
-    position: absolute;
-    top: 0;
-    right: -50px;
-    font-weight: 400;
+.header__title_word{
+    width: 173px;
+    margin: 0;
 }

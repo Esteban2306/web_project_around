@@ -47,6 +47,12 @@
     background-position: center;  
     margin: 31.5px 0 0 5px;
     border: 1px solid transparent;
+    cursor: pointer;
+}
+
+.profile__edit-button:hover{
+    filter: grayscale(100%);
+    opacity: 0.5;
 }
 
 .profile__add-button{
@@ -60,4 +66,11 @@
     background-position: center;
     grid-column: 4; 
     margin: auto 0;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+.profile__add-button:hover{
+    filter: grayscale(100%);
+    opacity: 0.5;
 }

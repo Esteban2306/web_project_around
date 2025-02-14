@@ -1,3 +1,11 @@
+.galery{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(282px, 1fr));
+    gap: 17px;
+    margin: auto;
+    padding-bottom: 40px;
+}
+
 .galery__item{
     max-width: 282px;
     width: 100%;
@@ -16,11 +24,40 @@
 
 }
 
+.galery__item_content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5px;
+}
+.galery__item_like-button{
+    background-image: url(../image/heart.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: transparent;
+    border: none;
+    width: 28px;
+    height: 21px;
+    max-width: 23px;
+    cursor: pointer;
+}
+.galery__item_like-button:hover{
+    filter: grayscale(100%);
+    opacity: 0.5;
+}
+
+.galery__item_like-button.liked {
+    background-image: url(../image/black_heart.svg);
+}
+
 .galery__item_name{
-    font-size: 18px;
     color: #333;
-    margin-bottom: 10px;
+    margin: auto;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    font-size: 24px;
+    font-weight: 900;
+    max-width: 240px;
 }
