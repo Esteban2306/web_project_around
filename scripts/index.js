@@ -55,20 +55,28 @@ function renderizarTarjetas() {
     contenedor.innerHTML = '';
 
     galeryItems.forEach((item, index) => {
-        const itemClone = template.cloneNode(true);
+        const itemClone = template.cloneNode(true).firstElementChild;
+        // se utiliza firstElementChild porque cuando utilizamos solo cloneNode(true) 
+        // nos devuelve un fragmento de documento y no un elemento html so cunado se utiliza firstElementChild
+        // se obtiene el primer elemento hijo del fragmento de documento que es el que necesitamos
 
         itemClone.querySelector('.galery__item-image').src = item.imagen;
         itemClone.querySelector('.galery__item-image').alt = item.imagen;
         itemClone.querySelector('.galery__item-name').textContent = item.title;
 
+
+        // boton de like
         const heartButton = itemClone.querySelector(".galery__item-like-button");
-        
-        if (heartButton) {
-          heartButton.addEventListener('click', function() {
+        heartButton.addEventListener('click', function () {
             this.classList.toggle('liked');
         });
-        }  
 
+        // boton para eliminar tarjeta por separado
+        const deleteButton = itemClone.querySelector(".galery__item-delete-button");
+        deleteButton.addEventListener('click', function () {
+            itemClone.remove();
+        });
+        
         contenedor.appendChild(itemClone);
 
     });
