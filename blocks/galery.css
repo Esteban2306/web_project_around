@@ -1,4 +1,5 @@
-.galery{
+
+#galery__content{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(282px, 1fr));
     gap: 17px;

@@ -70,7 +70,7 @@
         max-width: 18px;
         height: 18px;
     }
-    .galery{
+    #galery__content{
         gap: 10px;
     }
     .galery__item{
@@ -115,7 +115,7 @@
         max-width: 18px;
         height: 18px;
     }
-    .galery{
+    #galery__content{
         gap: 10px;
     }
     .galery__item{

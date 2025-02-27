@@ -5,21 +5,11 @@ const editButton = profile.querySelector('.profile__edit-button');
 const addButton = profile.querySelector('.profile__add-button');
 
 
-const modal = document.createElement('div');
-    modal.className = 'modal';
-    modal.innerHTML = `
-        <div class="modal__content">
-            <button class="close" type="button"></button>
-            <h2 class="modal__content_header">Editar perfil</h2>
-            <form class="modal__form">
-                <input type="text" id="nombre" placeholder="Nombre" class="modal__form_name" required>
-                
-                <input type="text" id="descripcion" placeholder="Acerca de mi" class="modal__form_description" required>
-                
-                <button type="submit" class="modal__content_button">Guardar</button>
-            </form>
-        </div>`;
-    document.body.appendChild(modal);
+const template = document.getElementById('modal-template').content.cloneNode(true);
+
+const modal= template.querySelector('.modal');
+document.body.appendChild(modal);
+
 
     const close = modal.querySelector('.close');
     const form = modal.querySelector('.modal__form');
@@ -49,12 +39,43 @@ editButton.addEventListener('click', () => {
     
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-    const heartButton = document.querySelectorAll(".galery__item-like-button");
+const galeryItems = [
+    { title: "Valle de Yosemite", imagen: "image/place_1.jpg"},
+    { title: "Lago Louise", imagen: "image/place_2.png"},
+    { title: "Montañas Calvas", imagen: "image/place_3.png"},
+    { title: "Latemar", imagen: "image/place_4.png"},
+    { title: "Vanoise National Park", imagen: "image/place_5.png"},
+    { title: "Lago di Braies", imagen: "image/place_6.png"},
+];
 
-    heartButton.forEach((heartButton) => {  
-        heartButton.addEventListener("click", function () {
-            this.classList.toggle("liked");
+function renderizarTarjetas() {
+    const contenedor =document.getElementById('galery__content');
+    const template = document.getElementById('galery').content;
+
+    contenedor.innerHTML = '';
+
+    galeryItems.forEach((item, index) => {
+        const itemClone = template.cloneNode(true);
+
+        itemClone.querySelector('.galery__item-image').src = item.imagen;
+        itemClone.querySelector('.galery__item-image').alt = item.imagen;
+        itemClone.querySelector('.galery__item-name').textContent = item.title;
+
+        const heartButton = itemClone.querySelector(".galery__item-like-button");
+        
+        if (heartButton) {
+          heartButton.addEventListener('click', function() {
+            this.classList.toggle('liked');
         });
+        }  
+
+        contenedor.appendChild(itemClone);
+
     });
-});
+
+  
+}
+
+
+
+document.addEventListener('DOMContentLoaded', renderizarTarjetas);
