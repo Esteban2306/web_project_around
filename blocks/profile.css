@@ -14,23 +14,23 @@
     display: grid;
     grid-template-columns: auto 24px;
 }
-.profile__info_image{
+.profile__image{
     max-width: 120px;
     border-radius: 50%;
 }
-.profile__info_list{
+.profile__info-list{
     list-style-type: none;
     padding: 0;
 
 }
 
-.profile__info_list-name{
+.profile__info-name{
     max-width: 380px;
     margin: auto 0 16px;
     font-size: 42px;
 }
 
-.profile__info_list-description{
+.profile__info-description{
     margin: 0;
     font-size: 18px;
 }

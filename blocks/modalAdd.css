@@ -1,4 +1,4 @@
-.modal {
+.modal__add{
     display: none;
     position: fixed;
     top: 0;
@@ -11,7 +11,7 @@
     align-items: center;
 }
 
-.modal__content {
+.modal__add-content{
     background-color: #fff;
     margin: 200px auto;
     padding: 36px;
@@ -21,18 +21,20 @@
     height: 100%;
     position: relative;
 }
-.modal__content_header{
+
+.modal__add-content-header{
     font-size: 24px;
     font-weight: 900;
     margin-bottom: 50px;
 }
-.modal__form {
+
+.modal__add-form{
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-}   
+}
 
-.modal__form_name{
+.modal__add-form-name{
     font-size: 14px;
     border:none;
     border-bottom: 1px solid #afa7a7;
@@ -43,12 +45,12 @@
     transition:  0.3s ease, color 0.3s ease;
 }
 
-.modal__form_name:hover{
+.modal__add-form-name:hover{
     border-bottom: 1px solid #248307;
     background-color: rgba(126, 126, 126, 0.253);
 }
 
-.modal__form_description{
+.modal__add-form-description{
     font-size: 14px;
     border:none;
     border-bottom: 1px solid #afa7a7;
@@ -59,11 +61,12 @@
     transition:  0.3s ease, color 0.3s ease;
 }
 
-.modal__form_description:hover{
+.modal__add-form-description:hover{
     border-bottom: 1px solid #248307;
     background-color: rgba(126, 126, 126, 0.253);
 }
-.modal__content_button{
+
+.modal__add-content-button{
     max-width: 358px;
     width: 100%;
     height: 50px;
@@ -75,10 +78,11 @@
     transition:  0.3s ease, color 0.3s ease;
 }
 
-.modal__content_button:hover{
+.modal__add-content-button:hover{
     background-color: #353333;
 }
-.close {
+
+.close__add{
     width: 40px;
     height: 40px;
     background-image: url(../image/Close_Icon.svg);
@@ -93,7 +97,7 @@
     top: -45px;
 }
 
-.close:hover {
+.close__add:hover{
     filter: grayscale(100%);
     opacity: 0.5;
 }

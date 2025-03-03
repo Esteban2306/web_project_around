@@ -13,69 +13,63 @@
 <body>
     <div class="page">
         <header class="header">
-            <h1 class="header__title"><h1 class="header__title_word"><img src="./image/header.svg" alt=""></h1>
+            <h1 class="header__title header__title_word"><img src="./image/header.svg" alt=""></h1>
         </header>
         <main class="content">
             <section class="profile">
                 
-                <img src="./image/perfil_image.jpg" alt="profile of a men" class="profile__info_image">
+                <img src="./image/perfil_image.jpg" alt="profile of a men" class="profile__image">
                 <div class="profile__info">
-                <ul class="profile__info_list">
-                    <li><h1 class="profile__info_list-name" id="name">Jacques Cousteau</h1></li>
-                    <li><p class="profile__info_list-description" id="description">Explorador</p></li>
+                <ul class="profile__info-list">
+                    <li><h1 class="profile__info-name" id="name">Jacques Cousteau</h1></li>
+                    <li><p class="profile__info-description" id="description">Explorador</p></li>
                 </ul>
                 
                 <button class="profile__edit-button" type="button">.</button>
                 </div>
                 <button class="profile__add-button" type="button">.</button>
             </section>
-            <section class="galery">
-                <div class="galery__item">
-                    <img src="./image/place_1.jpg" alt="place 1" class="galery__item_image">
-                    <div class="galery__item_content">
-                    <p class="galery__item_name">Valle de Yosemite</p>
-                    <button class="galery__item_like-button"></button>
+            <template id="modal-template">
+                <div class="modal">
+                    <div class="modal__content">
+                        <button class="close" type="button"></button>
+                        <h2 class="modal__content_header">Editar perfil</h2>
+                        <form class="modal__form">
+                            <input type="text" id="nombre" placeholder="Nombre" class="modal__form_name" required>
+                            <input type="text" id="descripcion" placeholder="Acerca de mí" class="modal__form_description" required>
+                            <button type="submit" class="modal__content_button">Guardar</button>
+                        </form>
                     </div>
                 </div>
-                <div class="galery__item">
-                    <img src="./image/place_2.png" alt="place 2" class="galery__item_image">
-                    <div class="galery__item_content">
-                    <p class="galery__item_name">Lago Louise</p>
-                    <button class="galery__item_like-button"></button>
+            </template>
+            <template id="modal__add-template">
+                <div class="modal__add">
+                    <div class="modal__add-content">
+                        <button class="close__add" type="button"></button>
+                        <h2 class="modal__add-content-header">Nuevo Lugar</h2>
+                        <form class="modal__add-form">
+                            <input type="text" id="nombreAdd" placeholder="Titulo" class="modal__add-form-name" required>
+                            <input type="text" id="imageAdd" placeholder="Enlace a la imagen" class="modal__add-form-description" required>
+                            <button type="submit" class="modal__add-content-button">Crear</button>
+                        </form>
                     </div>
                 </div>
+            </template>
+            <template id="galery">
                 <div class="galery__item">
-                    <img src="./image/place_3.png" alt="place 3" class="galery__item_image">
-                    <div class="galery__item_content">
-                    <p class="galery__item_name">Montañas Calvas</p>
-                    <button class="galery__item_like-button"></button>
+                    <img src="" alt="landscape image" class="galery__item-image">
+                    <button class="galery__item-delete-button"></button>
+                    <div class="galery__item-content">
+                    <p class="galery__item-name"></p>
+                    <button class="galery__item-like-button"></button>
                     </div>
                 </div>
-                <div class="galery__item">
-                    <img src="./image/place_4.png" alt="place 4" class="galery__item_image">
-                    <div class="galery__item_content">
-                    <p class="galery__item_name">Latemar</p>
-                    <button class="galery__item_like-button"></button>
-                    </div>
-                </div>
-                <div class="galery__item">
-                    <img src="./image/place_5.png" alt="place 5" class="galery__item_image">
-                    <div class="galery__item_content">
-                    <p class="galery__item_name">Vanois National y dice algo mas pero no lo muestra en el figma</p>
-                    <button class="galery__item_like-button"></button>
-                    </div>
-                </div>
-                <div class="galery__item">
-                    <img src="./image/place_6.png" alt="place 6" class="galery__item_image">
-                    <div class="galery__item_content">
-                    <p class="galery__item_name">Lago di Braies</p>
-                    <button class="galery__item_like-button"></button>
-                    </div>
-                </div>
-            </section>
+            </template>
+
+            <div id="galery__content"></div>
         </main>
 
     </div>
-    <script src="./scripts/script.js"></script>
+    <script src="./scripts/index.js"></script>
 </body>
 </html>

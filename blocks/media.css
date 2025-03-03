@@ -11,13 +11,13 @@
         justify-content: center;
     }
 
-    .profile__info_list{
+    .profile__info-list{
         display: flex;
         flex-direction: column;
         align-items: center;
     }
     
-    .profile__info_list-name{
+    .profile__info-name{
     font-size: 22px;
     }
     .profile__edit-button{
@@ -56,13 +56,13 @@
         justify-content: center;
     }
 
-    .profile__info_list{
+    .profile__info-list{
         display: flex;
         flex-direction: column;
         align-items: center;
     }
     
-    .profile__info_list-name{
+    .profile__info-name{
     font-size: 22px;
     }
     .profile__edit-button{
@@ -70,13 +70,23 @@
         max-width: 18px;
         height: 18px;
     }
-    .galery{
+    #galery__content{
         gap: 10px;
     }
     .galery__item{
         margin: auto;
     }
-    
+    .modal__content{
+        margin: 100px auto;
+
+    }
+
+    .close{
+        width: 20px;
+        height: 20px;
+        right: 6px;
+        top: -37px;
+    }
 }
 
 @media screen and (min-width: 769px) and (max-width: 999px){
@@ -91,13 +101,13 @@
         justify-content: center;
     }
 
-    .profile__info_list{
+    .profile__info-list{
         display: flex;
         flex-direction: column;
         align-items: center;
     }
     
-    .profile__info_list-name{
+    .profile__info-name{
     font-size: 22px;
     }
     .profile__edit-button{
@@ -105,10 +115,21 @@
         max-width: 18px;
         height: 18px;
     }
-    .galery{
+    #galery__content{
         gap: 10px;
     }
     .galery__item{
         margin: auto;
+    }
+    .modal__content{
+        margin: 100px auto;
+
+    }
+
+    .close{
+        width: 20px;
+        height: 20px;
+        right: 6px;
+        top: -37px;
     }
 }
