@@ -29,21 +29,21 @@
                 </div>
                 <button class="profile__add-button" type="button">.</button>
             </section>
-            <template id="modal-template">
-                <div class="modal">
-                    <div class="modal__content">
-                        <button class="close" type="button"></button>
-                        <h2 class="modal__content_header">Editar perfil</h2>
-                        <form class="modal__form">
-                            <input type="text" id="nombre" placeholder="Nombre" class="modal__form_name" required>
-                            <input type="text" id="descripcion" placeholder="Acerca de mí" class="modal__form_description" required>
-                            <button type="submit" class="modal__content_button">Guardar</button>
-                        </form>
+                <template id="modal-template">
+                    <div class="modal hidden">
+                        <div class="modal__content ">
+                            <button class="close" type="button"></button>
+                            <h2 class="modal__content_header">Editar perfil</h2>
+                            <form class="modal__form">
+                                <input type="text" id="nombre" placeholder="Nombre" class="modal__form_name" required>
+                                <input type="text" id="descripcion" placeholder="Acerca de mí" class="modal__form_description" required>
+                                <button type="submit" class="modal__content_button">Guardar</button>
+                            </form>
+                        </div>
                     </div>
-                </div>
-            </template>
+                </template>
             <template id="modal__add-template">
-                <div class="modal__add">
+                <div class="modal__add hidden">
                     <div class="modal__add-content">
                         <button class="close__add" type="button"></button>
                         <h2 class="modal__add-content-header">Nuevo Lugar</h2>
@@ -67,6 +67,14 @@
             </template>
 
             <div id="galery__content"></div>
+
+            <div id="popupimg" class="popupimg hidden">
+                <div class="popupimg__content">
+                    <button class="popupimg__content-close"></button>
+                    <img src="" alt="imagen ampliada" class="popupimg__content-image">
+                    <p class="popupimg__content-title"></p>
+                </div>
+            </div>
         </main>
 
     </div>
