@@ -70,11 +70,7 @@ formAdd.addEventListener('submit', (e) => {
     const nombre = document.getElementById('nombreAdd').value;
     const image = document.getElementById('imageAdd').value;
 
-<<<<<<< HEAD
     galeryItems.unshift({ title: nombre, imagen: image })
-=======
-    galeryItems.push({ title: nombre, imagen: image })
->>>>>>> 444983f17f2d915b0f157c2cebb30376f789b385
 
     renderizarTarjetas();
 
