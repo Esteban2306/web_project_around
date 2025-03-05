@@ -16,12 +16,12 @@ const close = modal.querySelector('.close');
 const form = modal.querySelector('.modal__form');
 
 close.addEventListener('click', () => {
-    modal.style.display = 'none';
+    modal.classList.toggle('hidden');
 });
 
 window.addEventListener('click', (e) => {
     if (e.target === modal) {
-        modal.style.display = 'none';
+        modal.classList.toggle('hidden');
     }
 });
 
@@ -29,14 +29,14 @@ form.addEventListener('submit', (e) => {
     e.preventDefault();
     name.textContent = document.getElementById('nombre').value;
     description.textContent = document.getElementById('descripcion').value;
-    modal.style.display = 'none';
+    modal.classList.toggle('hidden');
 });
 
 
 editButton.addEventListener('click', () => {
     document.getElementById('nombre').value = name.textContent;
     document.getElementById('descripcion').value = description.textContent;
-    modal.style.display = 'block'
+    modal.classList.toggle('hidden');
 
 });
 // fin de creacion de popup para editar el boton de perfil
@@ -55,12 +55,12 @@ const closeAdd = modalAdd.querySelector('.close__add');
 const formAdd = modalAdd.querySelector('.modal__add-form');
 
 closeAdd.addEventListener('click', () => {
-    modalAdd.style.display = 'none';
+    modalAdd.classList.toggle('hidden');
 });
 
 window.addEventListener('click', (e) => {
     if (e.target === modalAdd) {
-        modalAdd.style.display = 'none';
+        modalAdd.classList.toggle('hidden');;
     }
 });
 
@@ -76,14 +76,54 @@ formAdd.addEventListener('submit', (e) => {
 
     document.getElementById('nombreAdd').value = '';
     document.getElementById('imageAdd').value = '';
-    modalAdd.style.display = 'none';
+    modalAdd.classList.toggle('hidden');
 });
 
 addButton.addEventListener('click', () => {
-    modalAdd.style.display = 'block'
+    modalAdd.classList.toggle('hidden');
 });
 
 // fin de creacion de popup para agregar tarjetas
+
+//inicio de popup image tarjeta
+
+const modalImage = document.getElementById('popupimg');
+const imageModal = modalImage.querySelector('.popupimg__content-image');
+const closeImageModal = modalImage.querySelector('.popupimg__content-close');
+const titleImageModal = modalImage.querySelector('.popupimg__content-title');
+
+function openImageModal(evt) {
+    const clickedImage = evt.target;
+
+    if (clickedImage.classList.contains('galery__item-image')) {
+        imageModal.src = clickedImage.src;
+        imageModal.alt = clickedImage.alt;
+
+        const title = document.querySelector('.galery__item-name').textContent;
+        titleImageModal.textContent = title
+        modalImage.classList.toggle('hidden');
+    }
+
+}
+
+function closeImageModalFunction() {
+    modalImage.classList.toggle('hidden');
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    const galeryContent = document.getElementById('galery__content');
+    if (galeryContent) {
+        galeryContent.addEventListener('click', openImageModal);
+    }
+});
+
+closeImageModal.addEventListener('click', closeImageModalFunction);
+window.addEventListener('click', (e) => {
+    if (e.target === modalImage) {
+        closeImageModalFunction();
+    }
+});
+
 
 // inicio de creacion de tarjetas
 const galeryItems = [
@@ -111,7 +151,6 @@ function renderizarTarjetas() {
         itemClone.querySelector('.galery__item-image').alt = item.imagen;
         itemClone.querySelector('.galery__item-name').textContent = item.title;
 
-
         // boton de like
         const heartButton = itemClone.querySelector(".galery__item-like-button");
         heartButton.addEventListener('click', function () {
@@ -122,6 +161,10 @@ function renderizarTarjetas() {
         const deleteButton = itemClone.querySelector(".galery__item-delete-button");
         deleteButton.addEventListener('click', function () {
             itemClone.remove();
+            const index = galeryItems.indexOf(item);
+            if (index > -1) {
+                galeryItems.splice(index, 1);
+            }
         });
 
         contenedor.appendChild(itemClone);
@@ -130,7 +173,6 @@ function renderizarTarjetas() {
 
 
 }
-
 
 
 document.addEventListener('DOMContentLoaded', renderizarTarjetas);

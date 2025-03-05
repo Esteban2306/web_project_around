@@ -1,5 +1,4 @@
 .modal {
-    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -78,6 +77,7 @@
 .modal__content_button:hover{
     background-color: #353333;
 }
+
 .close {
     width: 40px;
     height: 40px;
