@@ -1,0 +1,19 @@
+.header{
+    border-bottom: 1px solid rgba(84, 84, 84, 1);
+    max-width: 880px;;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 45px 0 10px 0;
+}
+
+.header__title{
+    position: relative;
+}
+
+.header__title_word{
+    width: 173px;
+    margin: 0;
+}

@@ -1,0 +1,88 @@
+
+#galery__content{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(282px, 1fr));
+    gap: 17px;
+    margin: auto;
+    padding-bottom: 40px;
+}
+
+.galery__item{
+    max-width: 282px;
+    width: 100%;
+    height: 361px;
+    border-radius: 15px;
+    background-color: #ffffff;
+    text-align: center;
+    position: relative;
+}
+
+.galery__item-image{
+    max-width: 282px;
+    width: 100%;
+    height: 282px;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    cursor: pointer;
+
+}
+
+.galery__item-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5px;
+}
+.galery__item-like-button{
+    background-image: url(../image/heart.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: transparent;
+    border: none;
+    width: 28px;
+    height: 21px;
+    max-width: 23px;
+    cursor: pointer;
+}
+.galery__item-like-button:hover{
+    filter: grayscale(100%);
+    opacity: 0.5;
+}
+
+.galery__item-like-button.liked {
+    background-image: url(../image/black_heart.svg);
+}
+
+.galery__item-name{
+    color: #333;
+    margin: auto;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 24px;
+    font-weight: 900;
+    max-width: 240px;
+}
+
+.galery__item-delete-button{
+    background-image: url(../image/delete.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: transparent;
+    border: none;
+    width: 18px;
+    height: 19.3px;
+    max-width: 23px;
+    cursor: pointer;
+    position: absolute;
+    top: 18px;
+    right: 15px;
+}
+
+.galery__item-delete-button:hover{
+    filter: grayscale(100%);
+    opacity: 0.7;
+}

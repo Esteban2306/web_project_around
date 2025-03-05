@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="description" content="This is a website which represents a social network model in which you can create a profile, add photos and like them.">
+    <meta name="author" content="Esteban Castañeda">
+    <link rel="stylesheet" href="./pages/index.css">
+    <link rel="icon" href="./image/icon.ico" type="image/x-icon">
+    <title>around the US</title>
+</head>
+<body>
+    <div class="page">
+        <header class="header">
+            <h1 class="header__title header__title_word"><img src="./image/header.svg" alt=""></h1>
+        </header>
+        <main class="content">
+            <section class="profile">
+                
+                <img src="./image/perfil_image.jpg" alt="profile of a men" class="profile__image">
+                <div class="profile__info">
+                <ul class="profile__info-list">
+                    <li><h1 class="profile__info-name" id="name">Jacques Cousteau</h1></li>
+                    <li><p class="profile__info-description" id="description">Explorador</p></li>
+                </ul>
+                
+                <button class="profile__edit-button" type="button">.</button>
+                </div>
+                <button class="profile__add-button" type="button">.</button>
+            </section>
+                <template id="modal-template">
+                    <div class="modal hidden">
+                        <div class="modal__content ">
+                            <button class="close" type="button"></button>
+                            <h2 class="modal__content_header">Editar perfil</h2>
+                            <form class="modal__form">
+                                <input type="text" id="nombre" placeholder="Nombre" class="modal__form_name" required>
+                                <input type="text" id="descripcion" placeholder="Acerca de mí" class="modal__form_description" required>
+                                <button type="submit" class="modal__content_button">Guardar</button>
+                            </form>
+                        </div>
+                    </div>
+                </template>
+            <template id="modal__add-template">
+                <div class="modal__add hidden">
+                    <div class="modal__add-content">
+                        <button class="close__add" type="button"></button>
+                        <h2 class="modal__add-content-header">Nuevo Lugar</h2>
+                        <form class="modal__add-form">
+                            <input type="text" id="nombreAdd" placeholder="Titulo" class="modal__add-form-name" required>
+                            <input type="text" id="imageAdd" placeholder="Enlace a la imagen" class="modal__add-form-description" required>
+                            <button type="submit" class="modal__add-content-button">Crear</button>
+                        </form>
+                    </div>
+                </div>
+            </template>
+            <template id="galery">
+                <div class="galery__item">
+                    <img src="" alt="landscape image" class="galery__item-image">
+                    <button class="galery__item-delete-button"></button>
+                    <div class="galery__item-content">
+                    <p class="galery__item-name"></p>
+                    <button class="galery__item-like-button"></button>
+                    </div>
+                </div>
+            </template>
+
+            <div id="galery__content"></div>
+
+            <div id="popupimg" class="popupimg hidden">
+                <div class="popupimg__content">
+                    <button class="popupimg__content-close"></button>
+                    <img src="" alt="imagen ampliada" class="popupimg__content-image">
+                    <p class="popupimg__content-title"></p>
+                </div>
+            </div>
+        </main>
+
+    </div>
+    <script src="./scripts/index.js"></script>
+</body>
+</html>
