@@ -25,6 +25,12 @@ window.addEventListener('click', (e) => {
     }
 });
 
+window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        modal.classList.add('hidden');
+    }
+});
+
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     name.textContent = document.getElementById('nombre').value;
@@ -111,7 +117,7 @@ const checkInputValidity = (formElement, inputElement) => {
 
 const hasInvalidInput = (inputList) => {
     return inputList.some((inputElement) => {
-        return !inputElement.validity.valid;
+        return !inputElement.validity.valid || inputElement.value.trim() === "";
     });
 };
 
@@ -119,8 +125,10 @@ const hasInvalidInput = (inputList) => {
 const toggleButtonState = (inputList, buttonElement) => {
     if (hasInvalidInput(inputList)) {
         buttonElement.classList.add('button__inactivate');
+        buttonElement.disabled = true;
     } else {
         buttonElement.classList.remove('button__inactivate');
+        buttonElement.disabled = false;
     }
 };
 

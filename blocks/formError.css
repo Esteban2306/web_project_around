@@ -13,8 +13,14 @@
     display: block;
 }
 
-.buttton__inactivate{
+.button__inactivate{
     background-color: #808080;
+    border: gray;
     color: #494949;
-    cursor: not-allowed;
+}
+
+.button__inactivate:hover{
+    background-color: #aa3e3e;
+    border: #aa3e3e;
+    color: #494949;
 }
