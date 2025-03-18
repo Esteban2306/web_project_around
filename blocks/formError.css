@@ -1,0 +1,20 @@
+.form__input_type_error {
+    border-bottom: 2px solid red;
+    background-color: #ffe6e6;
+}
+
+.modal__error {
+    display: none;
+    color: red;
+    font-size: 12px;
+}
+
+.modal__error_active {
+    display: block;
+}
+
+.buttton__inactivate{
+    background-color: #808080;
+    color: #494949;
+    cursor: not-allowed;
+}

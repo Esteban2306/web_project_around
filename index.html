@@ -34,10 +34,12 @@
                         <div class="modal__content ">
                             <button class="close" type="button"></button>
                             <h2 class="modal__content_header">Editar perfil</h2>
-                            <form class="modal__form">
-                                <input type="text" id="nombre" placeholder="Nombre" class="modal__form_name" required>
-                                <input type="text" id="descripcion" placeholder="Acerca de mí" class="modal__form_description" required>
-                                <button type="submit" class="modal__content_button">Guardar</button>
+                            <form class="modal__form form" novalidate>
+                                <input type="text" id="nombre" placeholder="Nombre" class="modal__form_name modal__input" minlength="2" maxlength="40" required>
+                                <span class="nombre-error modal__error"></span>
+                                <input type="text" id="descripcion" placeholder="Acerca de mí" class="modal__form_description modal__input" min="2" max="200" required>
+                                <span class="descripcion-error modal__error"></span>
+                                <button type="submit" class="modal__content_button form__submit">Guardar</button>
                             </form>
                         </div>
                     </div>
@@ -47,10 +49,12 @@
                     <div class="modal__add-content">
                         <button class="close__add" type="button"></button>
                         <h2 class="modal__add-content-header">Nuevo Lugar</h2>
-                        <form class="modal__add-form">
-                            <input type="text" id="nombreAdd" placeholder="Titulo" class="modal__add-form-name" required>
-                            <input type="text" id="imageAdd" placeholder="Enlace a la imagen" class="modal__add-form-description" required>
-                            <button type="submit" class="modal__add-content-button">Crear</button>
+                        <form class="modal__add-form form" novalidate>
+                            <input type="text" id="nombreAdd" placeholder="Titulo" class="modal__add-form-name modal__input " minlength="2" maxlength="30" required>
+                            <span class="nombreAdd-error modal__error"></span>
+                            <input type="url" id="imageAdd" placeholder="Enlace a la imagen" class="modal__add-form-description modal__input" required>
+                            <span class="imageAdd-error modal__error"></span>
+                            <button type="submit" class="modal__add-content-button form__submit">Crear</button>
                         </form>
                     </div>
                 </div>
