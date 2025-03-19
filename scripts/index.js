@@ -6,9 +6,9 @@ const addButton = profile.querySelector('.profile__add-button');
 
 
 // inico de creacion de popup paraeditar el boton de perfil
-const templateedit = document.getElementById('modal-template').content.cloneNode(true);
+const contentedit = document.getElementById('modal-edit-all');
 
-const modal = templateedit.querySelector('.modal');
+const modal = contentedit.querySelector('.modal');
 document.body.appendChild(modal);
 
 
@@ -48,10 +48,10 @@ editButton.addEventListener('click', () => {
 // fin de creacion de popup para editar el boton de perfil
 
 // inicio de creacion de popup para agregar tarjetas
-const templateAdd = document.getElementById('modal__add-template').content.cloneNode(true);
+const contentAdd = document.getElementById('modal__add-all');
 
 
-const modalAdd = templateAdd.querySelector('.modal__add');
+const modalAdd = contentAdd.querySelector('.modal__add');
 document.body.appendChild(modalAdd);
 
 console.log(modalAdd);
