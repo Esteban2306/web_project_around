@@ -6,88 +6,75 @@ const addButton = profile.querySelector('.profile__add-button');
 
 
 // inico de creacion de popup paraeditar el boton de perfil
-const contentedit = document.getElementById('modal-edit-all');
 
-const modal = contentedit.querySelector('.modal');
-document.body.appendChild(modal);
+const modalEdit = document.getElementById('modal-edit-all').querySelector('.modal');
+const modalAdd = document.getElementById('modal__add-all').querySelector('.modal__add');
 
 
-const close = modal.querySelector('.close');
-const form = modal.querySelector('.modal__form');
-
-close.addEventListener('click', () => {
+function toggleModal() {
     modal.classList.toggle('hidden');
-});
+}
 
-window.addEventListener('click', (e) => {
-    if (e.target === modal) {
-        modal.classList.toggle('hidden');
+function setupModalEvents(modal, closeButton, form = null, onSubmit = null) {
+    closeButton.addEventListener('click', () => toggleModal(modal));
+
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            toggleModal(modal);
+        }
+    });
+
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+            toggleModal(modal);
+        }
+    });
+
+    if (form && onSubmit) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            onSubmit();
+            toggleModal(modal);
+        });
+    };
+}
+const close = modalEdit.querySelector('.close');
+console.log(close);
+const form = modalEdit.querySelector('.modal__form');
+setupModalEvents(
+    modalEdit,
+    close,
+    modalEdit.querySelector('.modal__form'),
+    () => {
+        name.textContent = modalEdit.getElementById('nombre').value;
+        description.textContent = modalEdit.getElementById('descripcion').value;
     }
-});
+)
 
-window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-        modal.classList.add('hidden');
+setupModalEvents(
+    modalAdd,
+    modalAdd.querySelector('.close__Add'),
+    modalAdd.querySelector('.modal__add-form'),
+    () => {
+        const nombre = document.getElementById('nombreAdd').value;
+        const image = document.getElementById('imageAdd').value;
+
+        galeryItems.unshift({ title: nombre, imagen: image });
+        renderizarTarjetas();
+
+        modalAdd.querySelector('modal__add-form').reset();
     }
-});
-
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    name.textContent = document.getElementById('nombre').value;
-    description.textContent = document.getElementById('descripcion').value;
-    modal.classList.toggle('hidden');
-});
-
+);
 
 editButton.addEventListener('click', () => {
     document.getElementById('nombre').value = name.textContent;
     document.getElementById('descripcion').value = description.textContent;
-    modal.classList.toggle('hidden');
-
-});
-// fin de creacion de popup para editar el boton de perfil
-
-// inicio de creacion de popup para agregar tarjetas
-const contentAdd = document.getElementById('modal__add-all');
-
-
-const modalAdd = contentAdd.querySelector('.modal__add');
-document.body.appendChild(modalAdd);
-
-console.log(modalAdd);
-
-const closeAdd = modalAdd.querySelector('.close__add');
-const formAdd = modalAdd.querySelector('.modal__add-form');
-
-closeAdd.addEventListener('click', () => {
-    modalAdd.classList.toggle('hidden');
-});
-
-window.addEventListener('click', (e) => {
-    if (e.target === modalAdd) {
-        modalAdd.classList.toggle('hidden');;
-    }
-});
-
-formAdd.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    const nombre = document.getElementById('nombreAdd').value;
-    const image = document.getElementById('imageAdd').value;
-
-    galeryItems.unshift({ title: nombre, imagen: image })
-
-    renderizarTarjetas();
-
-    formAdd.reset();
-    modalAdd.classList.toggle('hidden');
+    toggleModal(modalEdit);
 });
 
 addButton.addEventListener('click', () => {
-    modalAdd.classList.toggle('hidden');
+    toggleModal(modalAdd);
 });
-
-// fin de creacion de popup para agregar tarjetas
 
 //inicio de comprobacion automatica de modal
 
@@ -133,7 +120,7 @@ const toggleButtonState = (inputList, buttonElement) => {
 };
 
 const setEventListeners = (formElement) => {
-    const inputList = Array.from(formElement.querySelectorAll("input"));
+    const inputList = Array.from(formElement.querySelectorAll(".modal__input"));
     const buttonElement = formElement.querySelector(".form__submit");
 
     toggleButtonState(inputList, buttonElement);
