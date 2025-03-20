@@ -14,7 +14,7 @@
     border-radius: 15px;
     background-color: #ffffff;
     text-align: center;
-    position: relative;
+
 }
 
 .galery__item-image{
@@ -33,6 +33,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px 5px;
+    position: relative;
 }
 .galery__item-like-button{
     background-image: url(../image/heart.svg);

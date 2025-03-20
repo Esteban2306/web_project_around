@@ -11,7 +11,7 @@ const modalEdit = document.getElementById('modal-edit-all').querySelector('.moda
 const modalAdd = document.getElementById('modal__add-all').querySelector('.modal__add');
 
 
-function toggleModal() {
+function toggleModal(modal) {
     modal.classList.toggle('hidden');
 }
 
@@ -46,14 +46,14 @@ setupModalEvents(
     close,
     modalEdit.querySelector('.modal__form'),
     () => {
-        name.textContent = modalEdit.getElementById('nombre').value;
-        description.textContent = modalEdit.getElementById('descripcion').value;
+        name.textContent = document.getElementById('nombre').value;
+        description.textContent = document.getElementById('descripcion').value;
     }
-)
+);
 
 setupModalEvents(
     modalAdd,
-    modalAdd.querySelector('.close__Add'),
+    modalAdd.querySelector('.close__add'),
     modalAdd.querySelector('.modal__add-form'),
     () => {
         const nombre = document.getElementById('nombreAdd').value;
@@ -62,7 +62,7 @@ setupModalEvents(
         galeryItems.unshift({ title: nombre, imagen: image });
         renderizarTarjetas();
 
-        modalAdd.querySelector('modal__add-form').reset();
+        document.querySelector('.modal__add-form').reset();
     }
 );
 
