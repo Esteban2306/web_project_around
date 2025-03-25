@@ -5,7 +5,7 @@ const editButton = profile.querySelector('.profile__edit-button');
 const addButton = profile.querySelector('.profile__add-button');
 
 
-// inico de creacion de popup paraeditar el boton de perfil
+// inico de creacion de popup
 
 const modalEdit = document.getElementById('modal-edit-all').querySelector('.modal');
 const modalAdd = document.getElementById('modal__add-all').querySelector('.modal__add');
@@ -138,6 +138,9 @@ const enableValidation = () => {
     formList.forEach((formElement) => {
         formElement.addEventListener("submit", function (evt) {
             evt.preventDefault();
+            const buttonElement = formElement.querySelector(".form__submit");
+            buttonElement.classList.add('button__inactivate');
+            buttonElement.disabled = true;
         });
 
         setEventListeners(formElement);
@@ -161,8 +164,7 @@ function openImageModal(evt) {
         imageModal.src = clickedImage.src;
         imageModal.alt = clickedImage.alt;
 
-        const title = document.querySelector('.galery__item-name').textContent;
-        titleImageModal.textContent = title
+        titleImageModal.textContent = clickedImage.alt;
         modalImage.classList.toggle('hidden');
     }
 
@@ -210,7 +212,7 @@ function renderizarTarjetas() {
         // se obtiene el primer elemento hijo del fragmento de documento que es el que necesitamos
 
         itemClone.querySelector('.galery__item-image').src = item.imagen;
-        itemClone.querySelector('.galery__item-image').alt = item.imagen;
+        itemClone.querySelector('.galery__item-image').alt = item.title;
         itemClone.querySelector('.galery__item-name').textContent = item.title;
 
         // boton de like

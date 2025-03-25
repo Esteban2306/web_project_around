@@ -14,7 +14,7 @@
     border-radius: 15px;
     background-color: #ffffff;
     text-align: center;
-
+    position: relative;
 }
 
 .galery__item-image{
@@ -25,7 +25,6 @@
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     cursor: pointer;
-
 }
 
 .galery__item-content{
@@ -33,7 +32,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px 5px;
-    position: relative;
+    
 }
 .galery__item-like-button{
     background-image: url(../image/heart.svg);
@@ -44,7 +43,7 @@
     border: none;
     width: 28px;
     height: 21px;
-    max-width: 23px;
+    max-width: 24px;
     cursor: pointer;
 }
 .galery__item-like-button:hover{
