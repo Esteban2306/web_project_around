@@ -59,10 +59,15 @@ setupModalEvents(
         const nombre = document.getElementById('nombreAdd').value;
         const image = document.getElementById('imageAdd').value;
 
-        galeryItems.unshift({ title: nombre, imagen: image });
-        renderizarTarjetas();
 
-        document.querySelector('.modal__add-form').reset();
+        if (galery) {
+            const newitem = { title: nombre, imagen: image };
+            galeryItems.unshift(newitem);
+            galery.render();
+
+            document.querySelector('.modal__add-form').reset();
+        }
+
     }
 );
 
@@ -78,76 +83,83 @@ addButton.addEventListener('click', () => {
 
 //inicio de comprobacion automatica de modal
 
-const showInputError = (formElement, inputElement, errorMessage) => {
-    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-
-    inputElement.classList.add("form__input_type_error");
-    errorElement.textContent = errorMessage;
-    errorElement.classList.add("modal__error_active");
-};
-
-const hideInputError = (formElement, inputElement) => {
-    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-
-    inputElement.classList.remove("form__input_type_error");
-    errorElement.classList.remove("modal__error_active");
-    errorElement.textContent = "";
-};
-
-const checkInputValidity = (formElement, inputElement) => {
-    if (!inputElement.validity.valid) {
-        showInputError(formElement, inputElement, inputElement.validationMessage);
-    } else {
-        hideInputError(formElement, inputElement);
+class FormValidator {
+    constructor(fromSelector) {
+        this._form = document.querySelector(fromSelector);
+        this._inputList = Array.from(this._form.querySelectorAll(".modal__input"));
+        this._buttonElement = this._form.querySelector(".form__submit");
     }
-};
 
-const hasInvalidInput = (inputList) => {
-    return inputList.some((inputElement) => {
-        return !inputElement.validity.valid || inputElement.value.trim() === "";
-    });
-};
+    _showInputErrror(inputElement, errorMessage) {
+        const errorElement = this._form.querySelector(`.${inputElement.id}-error`);
 
-
-const toggleButtonState = (inputList, buttonElement) => {
-    if (hasInvalidInput(inputList)) {
-        buttonElement.classList.add('button__inactivate');
-        buttonElement.disabled = true;
-    } else {
-        buttonElement.classList.remove('button__inactivate');
-        buttonElement.disabled = false;
+        inputElement.classList.add("form__input_type_error");
+        errorElement.textContent = errorMessage;
+        errorElement.classList.add("modal__error_active");
     }
-};
 
-const setEventListeners = (formElement) => {
-    const inputList = Array.from(formElement.querySelectorAll(".modal__input"));
-    const buttonElement = formElement.querySelector(".form__submit");
+    _hideInputError(inputElement) {
+        const errorElement = this._form.querySelector(`.${inputElement.id}-error`);
 
-    toggleButtonState(inputList, buttonElement);
+        inputElement.classList.remove("form__input_type_error");
+        errorElement.classList.remove("modal__error_active");
+        errorElement.textContent = "";
+    }
 
-    inputList.forEach((inputElement) => {
-        inputElement.addEventListener("input", function () {
-            checkInputValidity(formElement, inputElement);
-            toggleButtonState(inputList, buttonElement);
+    _checkInputValidity(inputElement) {
+        if (!inputElement.validity.valid) {
+            this._showInputErrror(inputElement, inputElement.validationMessage);
+        } else {
+            this._hideInputError(inputElement);
+        }
+    }
+
+    _hasInvalidInput = () => {
+        return this._inputList.some((inputElement) => {
+            return !inputElement.validity.valid || inputElement.value.trim() === "";
         });
-    });
-};
+    };
 
-const enableValidation = () => {
-    const formList = Array.from(document.querySelectorAll(".form"));
-    formList.forEach((formElement) => {
-        formElement.addEventListener("submit", function (evt) {
+    _toggleButtonState = () => {
+        if (this._hasInvalidInput()) {
+            this._buttonElement.classList.add('button__inactivate');
+            this._buttonElement.disabled = true;
+        } else {
+            this._buttonElement.classList.remove('button__inactivate');
+            this._buttonElement.disabled = false;
+        }
+    };
+
+    _setEventListeners = () => {
+        this._toggleButtonState();
+
+        this._inputList.forEach(inputElement => {
+            inputElement.addEventListener("input", () => {
+                this._checkInputValidity(inputElement);
+                this._toggleButtonState();
+            });
+        });
+    };
+
+    enableValidation = () => {
+        this._form.addEventListener('submit', evt => {
             evt.preventDefault();
-            const buttonElement = formElement.querySelector(".form__submit");
-            buttonElement.classList.add('button__inactivate');
-            buttonElement.disabled = true;
-        });
+            this._buttonElement.classList.add('button__inactivate');
+            this._buttonElement.disabled = true;
+        })
 
-        setEventListeners(formElement);
-    });
-};
+        this._setEventListeners();
+    };
 
-enableValidation();
+}
+
+const forms = document.querySelectorAll('.form');
+forms.forEach(form => {
+    const validator = new FormValidator(`.${form.classList[1]}`);
+    validator.enableValidation();
+})
+
+//fin de comprobacion automatica de modal
 
 
 //inicio de popup image tarjeta
@@ -190,6 +202,51 @@ window.addEventListener('click', (e) => {
 
 
 // inicio de creacion de tarjetas
+
+
+
+class Card {
+    constructor(items, containerId, templateId) {
+        this._items = items; // es el array de objetos que se va a utilizar para crear las tarjetas
+        this._containerId = document.getElementById(containerId); // se obtiene el contenedor del html
+        this._templateId = document.getElementById(templateId).content; // se obtiene el template del html
+    }
+
+    render() {
+        this._containerId.innerHTML = '';
+        this._items.forEach((item, index) => this.addCard(item, index));
+    }
+
+    _addLikeButton(itemClone) {
+        itemClone.querySelector(".galery__item-like-button").addEventListener('click', function () {
+            this.classList.toggle('liked');
+        });
+    }
+
+    removeCard(index) {
+        this._items.splice(index, 1);
+        this.render();
+    }
+
+    _addDeleteButton(itemClone, index) {
+        itemClone.querySelector(".galery__item-delete-button").addEventListener('click', () => {
+            this.removeCard(index);
+        });
+    }
+
+    addCard(item, index) {
+        const itemClone = this._templateId.cloneNode(true).firstElementChild;
+        itemClone.querySelector('.galery__item-image').src = item.imagen;
+        itemClone.querySelector('.galery__item-image').alt = item.title;
+        itemClone.querySelector('.galery__item-name').textContent = item.title;
+
+        this._addLikeButton(itemClone);
+        this._addDeleteButton(itemClone, index);
+
+        this._containerId.appendChild(itemClone);
+    }
+}
+
 const galeryItems = [
     { title: "Valle de Yosemite", imagen: "image/place_1.jpg" },
     { title: "Lago Louise", imagen: "image/place_2.png" },
@@ -199,44 +256,9 @@ const galeryItems = [
     { title: "Lago di Braies", imagen: "image/place_6.png" },
 ];
 
-function renderizarTarjetas() {
-    const contenedor = document.getElementById('galery__content');
-    const template = document.getElementById('galery').content;
+let galery = null;
 
-    contenedor.innerHTML = '';
-
-    galeryItems.forEach((item) => {
-        const itemClone = template.cloneNode(true).firstElementChild;
-        // se utiliza firstElementChild porque cuando utilizamos solo cloneNode(true) 
-        // nos devuelve un fragmento de documento y no un elemento html so cunado se utiliza firstElementChild
-        // se obtiene el primer elemento hijo del fragmento de documento que es el que necesitamos
-
-        itemClone.querySelector('.galery__item-image').src = item.imagen;
-        itemClone.querySelector('.galery__item-image').alt = item.title;
-        itemClone.querySelector('.galery__item-name').textContent = item.title;
-
-        // boton de like
-        const heartButton = itemClone.querySelector(".galery__item-like-button");
-        heartButton.addEventListener('click', function () {
-            this.classList.toggle('liked');
-        });
-
-        // boton para eliminar tarjeta por separado
-        const deleteButton = itemClone.querySelector(".galery__item-delete-button");
-        deleteButton.addEventListener('click', function () {
-            itemClone.remove();
-            const index = galeryItems.indexOf(item);
-            if (index > -1) {
-                galeryItems.splice(index, 1);
-            }
-        });
-
-        contenedor.appendChild(itemClone);
-
-    });
-
-
-}
-
-
-document.addEventListener('DOMContentLoaded', renderizarTarjetas);
+document.addEventListener('DOMContentLoaded', () => {
+    galery = new Card(galeryItems, 'galery__content', 'galery');
+    galery.render();
+});
