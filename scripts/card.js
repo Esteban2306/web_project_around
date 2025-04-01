@@ -36,7 +36,7 @@ export class Card {
         this._addLikeButton(itemClone);
         this._addDeleteButton(itemClone, index);
 
-        this._containerId.appendChild(itemClone);
+        this._containerId.prepend(itemClone);
     }
 }
 

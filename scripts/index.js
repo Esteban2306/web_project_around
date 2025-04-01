@@ -12,8 +12,6 @@ const modalEdit = document.getElementById('modal-edit-all').querySelector('.moda
 const modalAdd = document.getElementById('modal__add-all').querySelector('.modal__add');
 
 const close = modalEdit.querySelector('.close');
-const form = modalEdit.querySelector('.modal__form');
-
 
 Utils.setupModalEvents(
     modalEdit,
@@ -37,7 +35,7 @@ Utils.setupModalEvents(
         if (galery) {
             const newitem = { title: nombre, imagen: image };
             galeryItems.unshift(newitem);
-            galery.render();
+            galery.addCard(newitem);
 
             document.querySelector('.modal__add-form').reset();
         }
@@ -83,9 +81,11 @@ let galery = null;
 
 const forms = document.querySelectorAll('.form');
 forms.forEach(form => {
-    const validator = new FormValidator(`.${form.classList[1]}`);
+    const validator = new FormValidator(`.${form.classList[0]}`);
     validator.enableValidation();
 })
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
     galery = new Card(galeryItems, 'galery__content', 'galery');
