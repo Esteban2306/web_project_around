@@ -40,11 +40,3 @@ export class Card {
     }
 }
 
-export const galeryItems = [
-    { title: "Valle de Yosemite", imagen: "image/place_1.jpg" },
-    { title: "Lago Louise", imagen: "image/place_2.png" },
-    { title: "Montañas Calvas", imagen: "image/place_3.png" },
-    { title: "Latemar", imagen: "image/place_4.png" },
-    { title: "Vanoise National Park", imagen: "image/place_5.png" },
-    { title: "Lago di Braies", imagen: "image/place_6.png" },
-];

@@ -1,17 +1,22 @@
-import { Card, galeryItems } from './card.js';
+import { Card } from './card.js';
 import { FormValidator } from './formValidator.js';
 import { Utils } from './utils.js';
+import {
+    galeryItems,
+    name,
+    description,
+    editButton,
+    addButton,
+    modalEdit,
+    modalAdd,
+    close,
+    modalImage,
+    imageModal,
+    closeImageModal,
+    titleImageModal
+} from './Constants.js';
 
-const profile = document.querySelector('.profile');
-const name = profile.querySelector('.profile__info-name');
-const description = profile.querySelector('.profile__info-description');
-const editButton = profile.querySelector('.profile__edit-button');
-const addButton = profile.querySelector('.profile__add-button');
 
-const modalEdit = document.getElementById('modal-edit-all').querySelector('.modal');
-const modalAdd = document.getElementById('modal__add-all').querySelector('.modal__add');
-
-const close = modalEdit.querySelector('.close');
 
 Utils.setupModalEvents(
     modalEdit,
@@ -55,10 +60,6 @@ addButton.addEventListener('click', () => {
 
 //inicio de popup image tarjeta
 
-const modalImage = document.getElementById('popupimg');
-const imageModal = modalImage.querySelector('.popupimg__content-image');
-const closeImageModal = modalImage.querySelector('.popupimg__content-close');
-const titleImageModal = modalImage.querySelector('.popupimg__content-title');
 
 document.addEventListener("DOMContentLoaded", function () {
     const galeryContent = document.getElementById('galery__content');
