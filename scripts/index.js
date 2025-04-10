@@ -1,6 +1,10 @@
 import { Card } from './card.js';
 import { FormValidator } from './formValidator.js';
-import { Utils } from './utils.js';
+import Popup from './Popup.js';
+import { PopupWithForm } from './PopupWithForm.js';
+import { PopupWithImage } from './PopupWithImage.js';
+import { UserInfo } from './UserInfo.js';
+import Section from './Section.js';
 import {
     galeryItems,
     name,
@@ -16,67 +20,21 @@ import {
     titleImageModal
 } from './Constants.js';
 
-
-
-Utils.setupModalEvents(
-    modalEdit,
-    close,
-    modalEdit.querySelector('.modal__form'),
-    () => {
-        name.textContent = document.getElementById('nombre').value;
-        description.textContent = document.getElementById('descripcion').value;
-    }
-);
-
-Utils.setupModalEvents(
-    modalAdd,
-    modalAdd.querySelector('.close__add'),
-    modalAdd.querySelector('.modal__add-form'),
-    () => {
-        const nombre = document.getElementById('nombreAdd').value;
-        const image = document.getElementById('imageAdd').value;
-
-
-        if (galery) {
-            const newitem = { title: nombre, imagen: image };
-            galeryItems.unshift(newitem);
-            galery.addCard(newitem);
-
-            document.querySelector('.modal__add-form').reset();
-        }
-
-    }
-);
-
-editButton.addEventListener('click', () => {
-    document.getElementById('nombre').value = name.textContent;
-    document.getElementById('descripcion').value = description.textContent;
-    Utils.toggleModal(modalEdit);
+const popupForm = new PopupWithForm('.modal__add', (data) => {
+    const nombre = data.title;
+    const image = data.link;
+    if (galery) {
+        const newitem = { title: nombre, link: image };
+        galeryItems.unshift(newitem);
+        galery.addCard(newitem);
+    };
 });
 
 addButton.addEventListener('click', () => {
-    Utils.toggleModal(modalAdd);
+    popupForm.open();
 });
 
-//inicio de popup image tarjeta
-
-
-document.addEventListener("DOMContentLoaded", function () {
-    const galeryContent = document.getElementById('galery__content');
-    if (galeryContent) {
-        galeryContent.addEventListener('click', (evt) => {
-            Utils.openImageModal(evt, modalImage, imageModal, titleImageModal);
-        });
-    }
-});
-
-closeImageModal.addEventListener('click', () => Utils.toggleModal(modalImage));
-
-window.addEventListener('click', (e) => {
-    if (e.target === modalImage) {
-        Utils.toggleModal(modalImage);
-    }
-});
+popupForm.setEventListeners();
 
 let galery = null;
 
@@ -84,11 +42,18 @@ const forms = document.querySelectorAll('.form');
 forms.forEach(form => {
     const validator = new FormValidator(`.${form.classList[0]}`);
     validator.enableValidation();
-})
-
-
+});
 
 document.addEventListener('DOMContentLoaded', () => {
-    galery = new Card(galeryItems, 'galery__content', 'galery');
+    const popupimage = new PopupWithImage('.popupimg');
+
+    galery = new Card(
+        galeryItems,
+        'galery__content',
+        'galery',
+        (link, name) => {
+            popupimage.open({ src: link, alt: name, caption: name })
+        });
+    popupimage.setEventListeners();
     galery.render();
 });

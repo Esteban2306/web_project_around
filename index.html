@@ -32,7 +32,7 @@
                 <div id="modal-edit-all">
                     <div class="modal hidden">
                         <div class="modal__content ">
-                            <button class="close" type="button"></button>
+                            <button class="close popup__close" type="button"></button>
                             <h2 class="modal__content_header">Editar perfil</h2>
                             <form class="modal__form form" novalidate>
                                 <input type="text" id="nombre" placeholder="Nombre" class="modal__form_name modal__input" minlength="2" maxlength="40" required>
@@ -44,15 +44,15 @@
                         </div>
                     </div>
                 </div>
-            <div id="modal__add-all">
+            <div id="modal__add-all" class="modal__add-all">
                 <div class="modal__add hidden modal">       
                     <div class="modal__add-content">
-                        <button class="close__add" type="button"></button>
+                        <button class="close__add popup__close" type="button"></button>
                         <h2 class="modal__add-content-header">Nuevo Lugar</h2>
                         <form class="modal__add-form form" novalidate>
-                            <input type="text" id="nombreAdd" placeholder="Titulo" class="modal__add-form-name modal__input " minlength="2" maxlength="30" required>
+                            <input type="text" id="nombreAdd" name='title' placeholder="Titulo" class="modal__add-form-name modal__input " minlength="2" maxlength="30" required>
                             <span class="nombreAdd-error modal__error"></span>
-                            <input type="url" id="imageAdd" placeholder="Enlace a la imagen" class="modal__add-form-description modal__input" required>
+                            <input type="url" id="imageAdd" name="link" placeholder="Enlace a la imagen" class="modal__add-form-description modal__input" required>
                             <span class="imageAdd-error modal__error"></span>
                             <button type="submit" class="modal__add-content-button form__submit">Crear</button>
                         </form>
@@ -74,7 +74,7 @@
 
             <div id="popupimg" class="popupimg hidden">
                 <div class="popupimg__content">
-                    <button class="popupimg__content-close"></button>
+                    <button class="popupimg__content-close popup__close"></button>
                     <img src="" alt="imagen ampliada" class="popupimg__content-image">
                     <p class="popupimg__content-title"></p>
                 </div>
