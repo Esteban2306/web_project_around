@@ -73,8 +73,7 @@ const userInfo = new UserInfo({
 });
 
 const popupEditForm = new PopupWithForm('.modal', ({ nombre, descripcion }) => {
-    userInfo.setUserInfo({ name: nombre, about: descripcion });
-    console.log(userInfo.setUserInfo({ name: nombre, about: descripcion }));
+    userInfo.setUserInfo({ name: nombre, description: descripcion });
 });
 
 popupEditForm.setEventListeners();
