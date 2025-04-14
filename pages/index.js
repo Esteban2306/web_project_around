@@ -1,17 +1,18 @@
-import { Card } from './card.js';
-import { FormValidator } from './formValidator.js';
-import Popup from './Popup.js';
-import { PopupWithForm } from './PopupWithForm.js';
-import { PopupWithImage } from './PopupWithImage.js';
-import { UserInfo } from './UserInfo.js';
-import Section from './Section.js';
+import { Card } from '../components/card.js';
+import { FormValidator } from '../components/formValidator.js';
+import { PopupWithForm } from '../components/PopupWithForm.js';
+import { PopupWithImage } from '../components/PopupWithImage.js';
+import { UserInfo } from '../components/UserInfo.js';
+import Section from '../components/Section.js';
 import {
     galeryItems,
     editButton,
     addButton,
     imageModal,
-    titleImageModal
-} from './Constants.js';
+    titleImageModal,
+    name,
+    description,
+} from '../constants/constants.js';
 
 const forms = document.querySelectorAll('.form');
 forms.forEach(form => {
@@ -73,6 +74,7 @@ const userInfo = new UserInfo({
 
 const popupEditForm = new PopupWithForm('.modal', ({ nombre, descripcion }) => {
     userInfo.setUserInfo({ name: nombre, about: descripcion });
+    console.log(userInfo.setUserInfo({ name: nombre, about: descripcion }));
 });
 
 popupEditForm.setEventListeners();

@@ -26,6 +26,12 @@ export class PopupWithForm extends Popup {
             this.close();
             this._form.reset();
         })
+
+        this._form.addEventListener('escape', (e) => {
+            if (e.key === 'Escape') {
+                this.close();
+            }
+        });
     }
 
     close() {
