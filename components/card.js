@@ -1,6 +1,6 @@
 export class Card {
     constructor(item, templateId, handleCardClick) {
-        this._item = item; // es el array de objetos que se va a utilizar para crear las tarjetas
+        this._item = item = []; // es el array de objetos que se va a utilizar para crear las tarjetas
         this._templateId = document.getElementById(templateId).content; // se obtiene el template del html
         this._handleCardClick = handleCardClick; // se obtiene el popup de la imagen
     }
@@ -13,7 +13,7 @@ export class Card {
     }
 
     removeCard(index) {
-        this._items.splice(index, 1);
+        this._item.splice(index, 1);
         this._itemClone.remove()
     }
 

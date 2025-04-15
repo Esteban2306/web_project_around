@@ -10,8 +10,6 @@ import {
     addButton,
     imageModal,
     titleImageModal,
-    name,
-    description,
 } from '../constants/constants.js';
 
 const forms = document.querySelectorAll('.form');
