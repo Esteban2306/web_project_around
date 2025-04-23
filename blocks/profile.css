@@ -18,6 +18,14 @@
     max-width: 120px;
     border-radius: 50%;
 }
+
+.profile__image:hover{
+    filter: grayscale(15%);
+    opacity: 0.5;
+    cursor: pointer;
+    background-image: url(../image/pencil_img.svg);
+}
+
 .profile__info-list{
     list-style-type: none;
     padding: 0;

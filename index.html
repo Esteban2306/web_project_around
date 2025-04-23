@@ -19,6 +19,7 @@
             <section class="profile">
                 
                 <img src="./image/perfil_image.jpg" alt="profile of a men" class="profile__image">
+                <!--<img src="./image/pencil_img.svg" alt="pencil" class="profile__image-pencil">-->
                 <div class="profile__info">
                 <ul class="profile__info-list">
                     <li><h1 class="profile__info-name" id="name">Jacques Cousteau</h1></li>
@@ -59,6 +60,18 @@
                     </div>
                 </div>
             </div>
+
+            <div id="modal__delete-card ">
+                <div class="delete-card hidden modal">
+                    <div class="delete-card__content">
+                        <button class="close__delete popup__close" type="button"></button>
+                        <h2 class="delete-card__content-header">¿Estás seguro?</h2>
+                        <p class="delete-card__content-text">¿Realmente deseas eliminar esta tarjeta?</p>
+                        <button type="submit" class="delete-card__content-button form__submit">Sí</button>
+                    </div>
+                </div>
+            </div>
+
             <template id="galery">
                 <div class="galery__item">
                     <img src="" alt="landscape image" class="galery__item-image">
@@ -69,6 +82,8 @@
                     </div>
                 </div>
             </template>
+
+            
 
             <div id="galery__content"></div>
 

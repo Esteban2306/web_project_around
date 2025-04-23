@@ -1,0 +1,79 @@
+
+.delete-card{
+    z-index: 9999 ;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    font-family: "inter", arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+}
+
+.delete-card__content{
+    background-color: #fff;
+    margin: 200px auto;
+    padding: 36px;
+    border-radius: 10px;
+    max-width: 430px;
+    max-height: 181px;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.delete-card__content-header{
+    font-size: 24px;
+    font-weight: 900;
+    margin: 0 auto 30px;
+    color: #000000;
+}
+
+.delete-card__content-text{
+    font-size: 18px;
+    margin-top: 0;
+    margin: 0 auto 50px;
+    color: #000000;
+}
+
+.delete-card__content-button{
+    max-width: 358px;
+    width: 100%;
+    height: 50px;
+    color: #fff;
+    background-color: #000;
+    border-radius: 8px;
+    text-align: center;
+    margin: 0 auto 0;
+    transition:  0.3s ease, color 0.3s ease;
+}
+
+.delete-card__content-button:hover{
+    background-color: #353333;
+}
+
+.close__delete{
+    width: 40px;
+    height: 40px;
+    background-image: url(../image/Close_Icon.svg);
+    cursor: pointer;
+    background-color: transparent;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid transparent;
+    position: absolute;
+    right: -45px;
+    top: -45px;
+}
+
+.close__delete:hover{
+    filter: grayscale(100%);
+    opacity: 0.5;
+}
