@@ -4,14 +4,24 @@ import { PopupWithForm } from '../components/PopupWithForm.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import { UserInfo } from '../components/UserInfo.js';
 import Section from '../components/Section.js';
-import Api from '../components/api.js';
+import Api from '../utils/Api.js';
 import {
-    galeryItems,
     editButton,
     addButton,
     imageModal,
     titleImageModal,
 } from '../constants/constants.js';
+
+const api = new Api({
+    baseUrl: 'https://around-api.es.tripleten-services.com/v1',
+    headers: {
+        "content-type": "application/json; charset=UTF-8",
+        authorization: '838f9adb-9e40-4b54-8266-23d124ff4365'
+    }
+});
+
+api.getUserInfo()
+    .then(data => console.log(data));
 
 const forms = document.querySelectorAll('.form');
 forms.forEach(form => {
@@ -29,6 +39,7 @@ const popupimage = new PopupWithImage('.popupimg', (data) => {
 const renderGalery = new Section({
     items: [],
     renderer: (item) => {
+        console.log(item);
         const card = new Card(
             item,
             'galery',
@@ -42,21 +53,9 @@ const renderGalery = new Section({
 }, '#galery__content'
 );
 
-
 renderGalery.rendererItems();
 
-fetch('https://around-api.es.tripleten-services.com/v1/cards/', {
-    method: 'GET',
-    headers: {
-        "content-type": "application/json; charset=UTF-8",
-        authorization: '838f9adb-9e40-4b54-8266-23d124ff4365'
-
-    },
-})
-    .then(res => {
-        if (!res.ok) throw new Error(`Error: ${res.status}`);
-        return res.json();
-    })
+api.getCards()
     .then(cards => {
         renderGalery._items = cards;
         renderGalery.rendererItems();
@@ -105,15 +104,3 @@ editButton.addEventListener('click', () => {
 
 
 });
-
-fetch('https://around-api.es.tripleten-services.com/v1/users/me', {
-    method: 'GET',
-    headers: {
-        authorization: "838f9adb-9e40-4b54-8266-23d124ff4365"
-    }
-}
-)
-    .then(res => res.json())
-    .then(data => console.log(data));
-
-

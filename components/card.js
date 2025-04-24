@@ -27,13 +27,13 @@ export class Card {
     addCard(item, index) {
         this._itemClone = this._templateId.cloneNode(true).firstElementChild;
         this._itemClone.querySelector('.galery__item-image').src = item.link;
-        this._itemClone.querySelector('.galery__item-image').alt = item.title;
-        this._itemClone.querySelector('.galery__item-name').textContent = item.title;
+        this._itemClone.querySelector('.galery__item-image').alt = item.name;
+        this._itemClone.querySelector('.galery__item-name').textContent = item.name;
 
         this._addLikeButton(this._itemClone);
         this._addDeleteButton(this._itemClone, index);
         this._itemClone.querySelector('.galery__item-image').addEventListener('click', () => {
-            this._handleCardClick(item.link, item.title);
+            this._handleCardClick(item.link, item.name);
         });
 
         return this._itemClone;
