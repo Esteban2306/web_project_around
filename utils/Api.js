@@ -8,7 +8,7 @@ export default class Api {
         return fetch(`${this._baseUrl}/${path}`, {
             method: method,
             headers: this._headers,
-            body: method !== 'GET' ? JSON.stringify({ data }) : null
+            body: method !== 'GET' ? JSON.stringify(data) : null
         })
 
     }
@@ -60,7 +60,7 @@ export default class Api {
     }
 
     updateProfile(data) {
-        return this._makefetch('users/me', 'PATCH', data)
+        return this._makefetch('users/me/avatar', 'PATCH', data)
             .then(this._checkResponse)
             .catch(this._catchError);
     }

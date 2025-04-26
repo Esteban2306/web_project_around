@@ -17,9 +17,12 @@
         </header>
         <main class="content">
             <section class="profile">
-                
-                <img src="./image/perfil_image.jpg" alt="profile of a men" class="profile__image">
-                <!--<img src="./image/pencil_img.svg" alt="pencil" class="profile__image-pencil">-->
+                <!-- <button class="profile__image-button" type="submit"> -->
+                <div class="profile__image-container"  > 
+                    <img src="./image/perfil_image.jpg" alt="profile of a men" class="profile__image" role="button" tabindex="0" aria-label="Editar imagen de perfil">
+                    <img src="./image/pencil_img.svg" alt="pencil" class="profile__image-pencil"/>
+                </div>
+                <!-- </button> -->
                 <div class="profile__info">
                 <ul class="profile__info-list">
                     <li><h1 class="profile__info-name" id="name">Jacques Cousteau</h1></li>
@@ -30,6 +33,19 @@
                 </div>
                 <button class="profile__add-button" type="button">.</button>
             </section>
+
+                <div class="modal__image hidden">
+                    <div class="modal__image-content">
+                        <button class="modal__image-close popup__close" type="button"></button>
+                        <h2 class="modal__image-header">Cambiar foto de perfil</h2>
+                        <form class="modal__image-form form" novalidate>
+                            <input type="url" id="avatar"  name="avatar" placeholder="Inagresa URL" class="modal__image_url modal__input" required>
+                            <span class="avatar-error modal__error"></span>
+                            <button type="submit" class="modal__image_button form__submit">Guardar</button>               
+                        </form>
+                    </div>
+                </div>
+
                 <div id="modal-edit-all">
                     <div class="modal hidden">
                         <div class="modal__content ">
@@ -61,7 +77,7 @@
                 </div>
             </div>
 
-            <div id="modal__delete-card ">
+            <div id="modal__delete-card" class="modal__delete-card">
                 <div class="delete-card hidden modal">
                     <div class="delete-card__content">
                         <button class="close__delete popup__close" type="button"></button>
@@ -82,8 +98,6 @@
                     </div>
                 </div>
             </template>
-
-            
 
             <div id="galery__content"></div>
 

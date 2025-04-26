@@ -10,18 +10,16 @@ import {
     addButton,
     imageModal,
     titleImageModal,
+    imageButton
 } from '../constants/constants.js';
 
-const api = new Api({
+export const api = new Api({
     baseUrl: 'https://around-api.es.tripleten-services.com/v1',
     headers: {
         "content-type": "application/json; charset=UTF-8",
         authorization: '838f9adb-9e40-4b54-8266-23d124ff4365'
     }
 });
-
-api.getUserInfo()
-    .then(data => console.log(data));
 
 const forms = document.querySelectorAll('.form');
 forms.forEach(form => {
@@ -65,17 +63,22 @@ api.getCards()
 const popupForm = new PopupWithForm('.modal__add', (data) => {
     const nombre = data.title;
     const image = data.link;
-    const item = { title: nombre, link: image };
-    const newitem = new Card(
-        item,
-        'galery',
-        (link, name) => {
-            popupimage.open({ src: link, alt: name, caption: name })
-            popupimage.setEventListeners();
-        })
-    const newCard = newitem.addCard(item);;
+    const item = { name: nombre, link: image };
+    console.log(item);
+    api.createNewCard(item)
+        .then((cardNew) => {
+            console.log(cardNew);
+            const newitem = new Card(
+                cardNew,
+                'galery',
+                (link, name) => {
+                    popupimage.open({ src: link, alt: name, caption: name })
+                    popupimage.setEventListeners();
+                }).addCard(cardNew);
 
-    renderGalery.addItem(newCard);
+            renderGalery.addItem(newitem);
+        })
+        .catch(err => console.error('Error al crear la tarjeta:', err))
 }
 );
 
@@ -90,8 +93,15 @@ const userInfo = new UserInfo({
     descriptionSelector: '#description'
 });
 
+api.getUserInfo()
+    .then(user => {
+        userInfo.setUserInfo({ name: user.name, description: user.about });
+    });
+
+
 const popupEditForm = new PopupWithForm('.modal', ({ nombre, descripcion }) => {
     userInfo.setUserInfo({ name: nombre, description: descripcion });
+    api.changeUserInfo({ name: nombre, about: descripcion })
 });
 
 popupEditForm.setEventListeners();
@@ -103,4 +113,19 @@ editButton.addEventListener('click', () => {
     popupEditForm.open();
 
 
+});
+
+const popupModalImage = new PopupWithForm('.modal__image', (data) => {
+    const avatarUrl = data.avatar
+    api.updateProfile({ avatar: avatarUrl })
+        .then((user) => {
+            document.querySelector('.profile__image').src = user.avatar;
+        })
+        .catch(err => console.error('Error al actualizar el avatar:', err))
+});
+
+popupModalImage.setEventListeners();
+
+imageButton.addEventListener('click', () => {
+    popupModalImage.open();
 });

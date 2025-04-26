@@ -1,25 +1,48 @@
+import { api } from "../pages/index.js";
+import Popup from "./Popup.js";
+
+
 export class Card {
-    constructor(item, templateId, handleCardClick) {
-        this._item = item = []; // es el array de objetos que se va a utilizar para crear las tarjetas
+    constructor(data, templateId, handleCardClick) {
+        this._item = data;
         this._templateId = document.getElementById(templateId).content; // se obtiene el template del html
         this._handleCardClick = handleCardClick; // se obtiene el popup de la imagen
     }
 
 
     _addLikeButton() {
-        this._itemClone.querySelector(".galery__item-like-button").addEventListener('click', function () {
-            this.classList.toggle('liked');
+        this._itemClone.querySelector(".galery__item-like-button").addEventListener('click', () => {
+            api.addLike(this._item._id)
+                .then(() => {
+                    this._itemClone.querySelector(".galery__item-like-button").classList.toggle('liked');
+                })
+                .catch(err => console.log('Error al dar like a la tarjeta:', err));
         });
     }
 
-    removeCard(index) {
-        this._item.splice(index, 1);
+    removeCard() {
         this._itemClone.remove()
     }
 
-    _addDeleteButton(index) {
+    _addDeleteButton() {
         this._itemClone.querySelector(".galery__item-delete-button").addEventListener('click', () => {
-            this.removeCard(index);
+            const popupDelete = new Popup('.delete-card');
+            popupDelete.setEventListeners();
+            popupDelete.open();
+
+            const confirmButton = document.querySelector('.delete-card__content-button');
+
+            const confirmDelete = () => {
+                api.deleteCard(this._item._id)
+                    .then(() => {
+                        this.removeCard();
+                        popupDelete.close();
+                        confirmButton.removeEventListener('click', confirmDelete);
+                    })
+                    .catch(err => console.error('Error al eliminar la tarjeta:', err));
+            };
+
+            confirmButton.addEventListener('click', confirmDelete);
         });
     }
 
