@@ -12,11 +12,20 @@ export class Card {
 
     _addLikeButton() {
         this._itemClone.querySelector(".galery__item-like-button").addEventListener('click', () => {
-            api.addLike(this._item._id)
-                .then(() => {
-                    this._itemClone.querySelector(".galery__item-like-button").classList.toggle('liked');
-                })
-                .catch(err => console.log('Error al dar like a la tarjeta:', err));
+            if (this._itemClone.querySelector(".galery__item-like-button").classList.contains('liked')) {
+                api.deleteLike(this._item._id)
+                    .then(() => {
+                        this._itemClone.querySelector(".galery__item-like-button").classList.remove('liked');
+                    })
+                    .catch(err => console.log('Error al quitar like a la tarjeta:', err));
+                return;
+            } else {
+                api.addLike(this._item._id)
+                    .then(() => {
+                        this._itemClone.querySelector(".galery__item-like-button").classList.add('liked');
+                    })
+                    .catch(err => console.log('Error al dar like a la tarjeta:', err));
+            }
         });
     }
 
@@ -52,6 +61,11 @@ export class Card {
         this._itemClone.querySelector('.galery__item-image').src = item.link;
         this._itemClone.querySelector('.galery__item-image').alt = item.name;
         this._itemClone.querySelector('.galery__item-name').textContent = item.name;
+        if (item.isLiked) {
+            this._itemClone.querySelector('.galery__item-like-button').classList.add('liked');
+        } else {
+            this._itemClone.querySelector('.galery__item-like-button').classList.remove('liked');
+        }
 
         this._addLikeButton(this._itemClone);
         this._addDeleteButton(this._itemClone, index);

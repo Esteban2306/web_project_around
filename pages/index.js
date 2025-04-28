@@ -91,13 +91,14 @@ popupForm.setEventListeners();
 const userInfo = new UserInfo({
     nameSelector: '#name',
     descriptionSelector: '#description'
+    , avatarSelector: '.profile__image'
 });
 
 api.getUserInfo()
     .then(user => {
         userInfo.setUserInfo({ name: user.name, description: user.about });
+        userInfo.setAvatar(user.avatar);
     });
-
 
 const popupEditForm = new PopupWithForm('.modal', ({ nombre, descripcion }) => {
     userInfo.setUserInfo({ name: nombre, description: descripcion });

@@ -59,6 +59,12 @@ export default class Api {
             .catch(this._catchError);
     }
 
+    deleteLike(cardId) {
+        return this._makefetch(`cards/${cardId}/likes`, 'DELETE')
+            .then(this._checkResponse)
+            .catch(this._catchError);
+    }
+
     updateProfile(data) {
         return this._makefetch('users/me/avatar', 'PATCH', data)
             .then(this._checkResponse)
