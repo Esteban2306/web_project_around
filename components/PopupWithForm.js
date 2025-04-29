@@ -17,6 +17,16 @@ export class PopupWithForm extends Popup {
         return inputValues;
     }
 
+    setLoading(isLoading, loadingText = 'Guardando...') {
+        const submitButton = this._form.querySelector('.form__submit');
+        if (isLoading) {
+            this._submitButtonText = submitButton.textContent;
+            submitButton.textContent = loadingText;
+        } else {
+            submitButton.textContent = this._submitButtonText;
+        }
+    }
+
     setEventListeners() {
         super.setEventListeners();
         this._form.addEventListener('submit', (e) => {
